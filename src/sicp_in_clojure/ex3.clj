@@ -217,7 +217,7 @@
 (defn set-cdr! [z value] (assoc! z 1 value))
 
 (defn make-queue
-  "Exercise 3.21"
+  "Exercise 3.22"
   []
   (let
     [ queue (cons_ nil nil)
@@ -280,7 +280,11 @@
 
 ; --------------------------------------------------
 
-(defn make-deque [] (cons_ nil nil))
+(defn make-deque
+  "Exercise 3.23"
+  []
+  (cons_ nil nil))
+
 (defn front-ptr [deq] (car deq))
 (defn rear-ptr [deq] (cdr deq))
 (defn empty-deque? [deq]
@@ -290,12 +294,12 @@
 
 (defn make-deque-link
   "deque items are 3-tuples (value, forward-ptr, backward-ptr)"
-  [v f b] (cons_ v (cons_ f (cons_ b nil))))
+  [v f b]
+  (cons_ v (cons_ f (cons_ b nil))))
 
 (defn get-value [deq-link] (car deq-link))
 (defn get-forward-ptr [deq-link] (car (cdr deq-link)))
 (defn get-backward-ptr [deq-link] (car (cdr (cdr deq-link))))
-
 (defn set-forward-ptr! [deq-link ptr] (set-car! (cdr deq-link) ptr))
 (defn set-backward-ptr! [deq-link ptr] (set-car! (cdr (cdr deq-link)) ptr))
 
