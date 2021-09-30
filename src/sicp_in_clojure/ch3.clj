@@ -42,3 +42,25 @@
 ((acc1 'deposit) 50)
 ((acc1 'depo) 10000000)
 )
+
+(defn cons_ [x y]
+  (let
+    [ a (atom x)
+      b (atom y)
+      set-x! (fn [v] (reset! a v))
+      set-y! (fn [v] (reset! b v))
+      dispatch
+        (fn [m]
+            (cond (= m 'car) @a
+                  (= m 'cdr) @b
+                  (= m 'set-car!) set-x!
+                  (= m 'set-cdr!) set-y!
+                  :else (throw (Exception. "Undefined op on cons"))))
+    ]
+    dispatch))
+
+(defn car [z] (z 'car))
+(defn cdr [z] (z 'cdr))
+(defn set-car! [z value] ((z 'set-car!) value) z)
+(defn set-cdr! [z value] ((z 'set-cdr!) value) z)
+
