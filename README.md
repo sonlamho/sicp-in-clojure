@@ -1,6 +1,6 @@
 # sicp-in-clojure
 
-A Clojure library designed to ... well, that part is up to you.
+Exercise solutions to SICP
 
 ## Usage
 
