@@ -1,4 +1,4 @@
-(ns sicp-in-clojure.book)
+(ns sicp-in-clojure.ch1)
 
 (defn square [x] (* x x ))
 

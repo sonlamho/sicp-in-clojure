@@ -1,4 +1,4 @@
-(ns sicp-in-clojure.book)
+(ns sicp-in-clojure.ch3)
 
 (def balance (atom 100))
 
@@ -43,7 +43,7 @@
 ((acc1 'depo) 10000000)
 )
 
-(defn cons_ [x y]
+(defn cons [x y]
   (let
     [ a (atom x)
       b (atom y)
