@@ -1,8 +1,7 @@
 (ns sicp-in-clojure.ex3
   (:require [sicp-in-clojure.ch3 :refer
-                [cons car cdr set-car! set-cdr!]]
-            [sicp-in-clojure.ch1]
-            ))
+             [cons car cdr set-car! set-cdr!]]
+            [sicp-in-clojure.ch1]))
 
 (defn make-deque
   "Exercise 3.23"
@@ -27,84 +26,83 @@
 (defn set-forward-ptr! [deq-link ptr] (set-car! (cdr deq-link) ptr))
 (defn set-backward-ptr! [deq-link ptr] (set-car! (cdr (cdr deq-link)) ptr))
 
-
 (defn front-deque [deq]
   (if (empty-deque? deq)
-      'empty
-      (get-value (front-ptr deq))))
+    'empty
+    (get-value (front-ptr deq))))
 
 (defn rear-deque [deq]
   (if (empty-deque? deq)
-      'empty
-      (get-value (rear-ptr deq))))
+    'empty
+    (get-value (rear-ptr deq))))
 
 (defn all-but-front [deq]
   (cons (get-forward-ptr (front-ptr deq))
-         (rear-ptr deq)))
+        (rear-ptr deq)))
 
 (defn deque-to-list [deq]
   (cond (empty-deque? deq)
-            '()
+        '()
         (identical? (front-ptr deq) (rear-ptr deq))
-            (list (front-deque deq))
+        (list (front-deque deq))
         :else
-            (conj (deque-to-list
-                    (all-but-front deq))
-                  (front-deque deq))))
+        (conj (deque-to-list
+               (all-but-front deq))
+              (front-deque deq))))
 
 (defn front-push-deque! [deq item]
   (let [old-front (front-ptr deq)
         new-front (make-deque-link item old-front nil)]
-        (if (empty-deque? deq)
-            (set-rear-ptr! deq new-front)
-            (set-backward-ptr! old-front new-front))
-        (set-front-ptr! deq new-front)
-        nil))
+    (if (empty-deque? deq)
+      (set-rear-ptr! deq new-front)
+      (set-backward-ptr! old-front new-front))
+    (set-front-ptr! deq new-front)
+    nil))
 
 (defn rear-push-deque! [deq item]
   (let [old-rear (rear-ptr deq)
         new-rear (make-deque-link item nil old-rear)]
-        (if (empty-deque? deq)
-            (set-front-ptr! deq new-rear)
-            (set-forward-ptr! old-rear new-rear))
-        (set-rear-ptr! deq new-rear)
-        nil))
+    (if (empty-deque? deq)
+      (set-front-ptr! deq new-rear)
+      (set-forward-ptr! old-rear new-rear))
+    (set-rear-ptr! deq new-rear)
+    nil))
 
 (defn front-pop-deque! [deq]
   (if (empty-deque? deq)
-      'empty
-      (let [old-front (front-ptr deq)
-            new-front (get-forward-ptr old-front)]
-            (when (not (nil? new-front))
-              (set-backward-ptr! new-front nil))
-            (set-front-ptr! deq new-front)
-            (get-value old-front))))
+    'empty
+    (let [old-front (front-ptr deq)
+          new-front (get-forward-ptr old-front)]
+      (when (not (nil? new-front))
+        (set-backward-ptr! new-front nil))
+      (set-front-ptr! deq new-front)
+      (get-value old-front))))
 
 (defn rear-pop-deque! [deq]
   (if (empty-deque? deq)
-      'empty
-      (let [old-rear (rear-ptr deq)
-            new-rear (get-backward-ptr old-rear)]
-            (when (not (nil? new-rear))
-              (set-forward-ptr! new-rear nil))
-            (set-rear-ptr! deq new-rear)
-            (get-value old-rear))))
+    'empty
+    (let [old-rear (rear-ptr deq)
+          new-rear (get-backward-ptr old-rear)]
+      (when (not (nil? new-rear))
+        (set-forward-ptr! new-rear nil))
+      (set-rear-ptr! deq new-rear)
+      (get-value old-rear))))
 
 (comment
-(def d (make-deque))
-(deque-to-list d)
-(front-push-deque! d 1)
-(deque-to-list d)
-(front-push-deque! d 2)
-(deque-to-list d)
-(front-push-deque! d 3)
-(deque-to-list d)
-(rear-push-deque! d :a)
-(deque-to-list d)
-(rear-push-deque! d :b)
-(deque-to-list d)
-(front-pop-deque! d)  ; repeat this
-(deque-to-list d)
-(rear-pop-deque! d)  ; repeat this
-)
+  (def d (make-deque))
+  (deque-to-list d)
+  (front-push-deque! d 1)
+  (deque-to-list d)
+  (front-push-deque! d 2)
+  (deque-to-list d)
+  (front-push-deque! d 3)
+  (deque-to-list d)
+  (rear-push-deque! d :a)
+  (deque-to-list d)
+  (rear-push-deque! d :b)
+  (deque-to-list d)
+  (front-pop-deque! d)  ; repeat this
+  (deque-to-list d)
+  (rear-pop-deque! d)  ; repeat this
+  )
 
