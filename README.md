@@ -1,10 +1,13 @@
 # sicp-in-clojure
 
-Exercise solutions to SICP
+Unit tests for SICP exercises in Clojure
 
 ## Usage
 
-FIXME
+- `master` branch contains only unit tests and starting solution templates. Hope
+  this will be a useful study resource.
+
+- My own exercise solutions are in `my_solutions` branch
 
 ## License
 
