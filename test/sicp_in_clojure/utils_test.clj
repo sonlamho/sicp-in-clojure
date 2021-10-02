@@ -10,6 +10,5 @@
     (is (falsy? (all? [nil])))
     (is (falsy? (all? [false true])))
     (is (falsy? (all? [true nil true])))
-    (is (falsy? (all? (conj (repeat 1000 true) false))))
-    ))
+    (is (falsy? (all? (conj (repeat 1000 true) false))))))
 
