@@ -3,4 +3,5 @@
 (defn make-accumulator
   "Exercise 3.1"
   [init]
-  'TODO)
+  (let [v (atom init)]
+    (fn [amount] (swap! v #(+ % amount)))))
