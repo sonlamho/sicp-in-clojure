@@ -20,7 +20,7 @@
   (testing "bad password returns a message"
     (let [acc (make-account 100 'pass123)]
       (is (= "Incorrect password" ((acc 'badpass 'withdraw) 20)))))
-  (testing "7 bad tries consecutive -> call the cops"
+  (testing ">7 bad tries consecutive -> call the cops"
     (let [acc (make-account 100 'pass123)]
       (is (all? (map #(= % "Incorrect password")
                      (map (acc 'badpass 'withdraw) (repeat 6 1)))))

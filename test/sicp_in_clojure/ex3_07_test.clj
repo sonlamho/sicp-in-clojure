@@ -1,6 +1,5 @@
 (ns sicp-in-clojure.ex3-07-test
   (:require [clojure.test :refer :all]
-            [sicp-in-clojure.utils :refer [all?]]
             [sicp-in-clojure.ex3-07 :refer [make-joint]]
             [sicp-in-clojure.ex3-03 :refer [make-account]]))
 
