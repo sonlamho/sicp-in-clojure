@@ -1,6 +1,6 @@
 (ns sicp-in-clojure.ex3-23
   (:require [sicp-in-clojure.ch3 :refer
-              [cons car cdr set-car! set-cdr!]]))
+             [cons car cdr set-car! set-cdr!]]))
 
 (defn make-deque
   "Exercise 3.23"
