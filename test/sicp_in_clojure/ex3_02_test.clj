@@ -31,5 +31,4 @@
       (is (= (map sqrt rands) (map s rands)))
       (is (= (map sqrt rand-ints) (map s rand-ints)))
       (is (= (map square rands) (map s2 rands)))
-      (is (= (map square rand-ints) (map s2 rand-ints)))
-      )))
+      (is (= (map square rand-ints) (map s2 rand-ints))))))
