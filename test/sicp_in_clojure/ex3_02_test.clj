@@ -25,7 +25,11 @@
       (is (= (s2 'how-many-calls?) 0))))
   (testing "wrapped function behaves the same way"
     (let [s (make-monitored sqrt)
-          s2 (make-monitored square)]
-      (is (= (s2 1.234) (square 1.234)))
-      (is (= (s2 9876) (square 9876))))))
-
+          s2 (make-monitored square)
+          rands (repeatedly 10 rand)
+          rand-ints (map rand-int (repeat 10 100))]
+      (is (= (map sqrt rands) (map s rands)))
+      (is (= (map sqrt rand-ints) (map s rand-ints)))
+      (is (= (map square rands) (map s2 rands)))
+      (is (= (map square rand-ints) (map s2 rand-ints)))
+      )))
