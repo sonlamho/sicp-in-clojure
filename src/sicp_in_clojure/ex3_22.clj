@@ -1,7 +1,6 @@
-(ns sicp-in-clojure.ex3
+(ns sicp-in-clojure.ex3-22
   (:require [sicp-in-clojure.ch3 :refer
-             [cons car cdr set-car! set-cdr!]]
-            [sicp-in-clojure.ch1]))
+             [cons car cdr set-car! set-cdr!]]))
 
 (defn accumulate [op init coll]
   (if (or (nil? coll) (= coll '()))
@@ -12,9 +11,8 @@
 (defn to-list [z]
   (accumulate (fn [x xs] (conj xs x)) '() z))
 
-; testing to-list
-(= (to-list (cons 1 (cons 2 (cons 100 nil))))
-   '(1 2 100))
+(assert (= (to-list (cons 1 (cons 2 (cons 3 (cons 4  nil)))))
+           (list 1 2 3 4)))
 
 (defn make-queue
   "Exercise 3.22"
@@ -25,63 +23,17 @@
     front-ptr
     (fn [] (car queue))
 
-    rear-ptr
-    (fn [] (cdr queue))
-
-    empty?
-    (fn [] (nil? (front-ptr)))
-
-    set-front-ptr!
-    (fn [item] (set-car! queue item))
-
-    set-rear-ptr!
-    (fn [item] (set-cdr! queue item))
-
-    front
-    (fn []
-      (if (empty?)
-        (throw (Exception. "Front called on empty queue"))
-        (car (front-ptr))))
-
-    insert!
-    (fn [item]
-      (let
-       [new-pair (cons item nil)]
-        (if (empty?)
-          (do (set-front-ptr! new-pair)
-              (set-rear-ptr! new-pair))
-          (do (set-cdr! (rear-ptr) new-pair)
-              (set-rear-ptr! new-pair)))
-        nil))
-
-    pop!
-    (fn []
-      (if (empty?)
-        (throw (Exception. "Pop called on empty queue"))
-        (let [frontval (front)]
-          (set-front-ptr! (cdr (front-ptr)))
-          frontval)))
+    ; TODO: define the missing functions
 
     dispatch
     (fn [m]
-      (cond (= m 'empty?) empty?
-            (= m 'front) front
-            (= m 'insert!) insert!
-            (= m 'pop!) pop!
+      ; More modern "method" names for queue operations
+      (cond (= m 'empty?) (fn [& _] 'TODO)
+            (= m 'front) (fn [& _] 'TODO)
+            (= m 'insert!) (fn [& _] 'TODO)
+            (= m 'pop!) (fn [& _] 'TODO)
             (= m 'to-list) (fn [] (to-list (front-ptr)))
             :else (throw (Exception. "Unknown request"))))]
 
     dispatch))
-
-(comment
-  (def q1 (make-queue))
-  ((q1 'insert!) 'a)
-  ((q1 'to-list))
-  ((q1 'insert!) 'b)
-  ((q1 'to-list))
-  ((q1 'insert!) 'c)
-  ((q1 'to-list))
-  ((q1 'pop!))  ; repeat this
-  ((q1 'front))
-  ((q1 'empty?)))
 
