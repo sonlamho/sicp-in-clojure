@@ -13,6 +13,14 @@
 
 - My own exercise solutions are in `my_solutions` branch
 
+- Running tests:
+  + Example running a specific test:
+    `lein test :only sicp-in-clojure.ex3-03-test`
+    to test your solution for exercise 3.03. Do note that we use underscores `_`
+    in filenames but dashes `-` in namespaces.
+  + Run all tests:
+    `lein test`
+
 ## License
 
 Copyright © 2021 FIXME
