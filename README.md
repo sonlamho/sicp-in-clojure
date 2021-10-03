@@ -7,19 +7,22 @@
 
 ## Usage
 
-- `master` branch contains only unit tests and starting solution templates. Hope
-  this will be a useful study resource for anyone who wants to do SICP exercise in
-  Clojure. Conttributions are welcome!
+- `master` branch contains only unit tests and solution templates. Hope
+  this will be a useful study resource for anyone who wants to do SICP exercises in
+  Clojure. Contributions are welcome!
 
-- My own exercise solutions are in `my_solutions` branch
+- My own exercise solutions are in `my_solutions` branch. Feel free to take a
+  look!
 
 - Running tests:
+
   + Example running a specific test:
-    `lein test :only sicp-in-clojure.ex3-03-test`
+    ```lein test :only sicp-in-clojure.ex3-03-test```
     to test your solution for exercise 3.03. Do note that we use underscores `_`
     in filenames but dashes `-` in namespaces.
+
   + Run all tests:
-    `lein test`
+    ```lein test```
 
 ## License
 

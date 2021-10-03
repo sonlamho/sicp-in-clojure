@@ -22,7 +22,11 @@ TEST_DIR = os.path.join(REPO_DIR, "test", ns_to_fpath(REPO_NAME))
 
 def process_ex_str(exstr: str) -> str:
     exstr = exstr.replace("_", ".").replace("-", ".")
-    return re.sub(r"[^0-9\.]", "", exstr).strip(".")
+    exstr = re.sub(r"[^0-9\.]", "", exstr).strip(".")
+    parts = exstr.split('.')
+    last_pos = len(parts) - 1
+    parts[last_pos] = parts[last_pos].zfill(2)
+    return '.'.join(parts)
 
 
 def solution_fname(exstr: str) -> str:
