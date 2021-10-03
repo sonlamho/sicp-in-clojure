@@ -1,6 +1,9 @@
 (ns sicp-in-clojure.ex3-23
   (:require [sicp-in-clojure.ch3 :refer
               [cons car cdr set-car! set-cdr!]]))
+; Note: cons defined in sicp-in-clojure.ch3 is different from Clojure's built-in cons
+; We need this because Clojure's built-in cons cannot be made mutable
+
 
 (defn make-deque
   "Exercise 3.23"
