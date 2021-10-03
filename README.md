@@ -1,11 +1,15 @@
 # sicp-in-clojure
 
-Unit tests for SICP exercises in Clojure
+[Clojure](https://clojure.org/) unit tests for exercises in 
+[Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sites/default/files/sicp/index.html)
+([SICP](https://mitpress.mit.edu/sites/default/files/sicp/index.html)).
+
 
 ## Usage
 
 - `master` branch contains only unit tests and starting solution templates. Hope
-  this will be a useful study resource.
+  this will be a useful study resource for anyone who wants to do SICP exercise in
+  Clojure. Conttributions are welcome!
 
 - My own exercise solutions are in `my_solutions` branch
 
