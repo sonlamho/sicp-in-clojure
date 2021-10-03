@@ -4,7 +4,6 @@
 ; Note: cons defined in sicp-in-clojure.ch3 is different from Clojure's built-in cons
 ; We need this because Clojure's built-in cons cannot be made mutable
 
-
 (defn accumulate [op init coll]
   (if (or (nil? coll) (= coll '()))
     init
