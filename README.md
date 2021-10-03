@@ -17,12 +17,26 @@
 - Running tests:
 
   + Example running a specific test:
+
     ```lein test :only sicp-in-clojure.ex3-03-test```
+
     to test your solution for exercise 3.03. Do note that we use underscores `_`
     in filenames but dashes `-` in namespaces.
 
   + Run all tests:
+
     ```lein test```
+
+
+- There's a convenient script to start a new exercise in `new_exercise.py`.
+  Example usage:
+
+    ```python3 new_exercise.py 1.23```
+
+  This will create a solution file and a test file at the right location with
+  the appropriate namespaces
+
+
 
 ## License
 
